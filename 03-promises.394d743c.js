@@ -1,0 +1,2 @@
+const e=document.querySelector("button[type=submit]"),t=document.querySelector("input[name=delay]"),n=document.querySelector("input[name=step]"),o=document.querySelector("input[name=amount]");function u(e,t){Math.random()>.3?console.log(`✅ Fulfilled promise ${e} in ${t}ms`):console.log(`❌ Rejected promise ${e} in ${t}ms`)}e.addEventListener("click",(e=>{e.preventDefault(),function(){for(let e=0;e<parseInt(o.value);e++){const o=parseInt(t.value)+parseInt(n.value)*e;setTimeout(u,o,e+1,o)}}()}));
+//# sourceMappingURL=03-promises.394d743c.js.map
