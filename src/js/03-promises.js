@@ -23,13 +23,14 @@ function repetable() {
   // }
   for (let i = 0; i < parseInt(amount.value); i++) {
     const special = parseInt(delay.value) + parseInt(step.value) * i;
-    createPromise(i+1, special)
-      .then(({ position, delay }) => {
+    let z = i+1;
+    createPromise(z, special)
+      .then(({z, special }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`
         );
       })
-      .catch(({ position, delay }) => {
+      .catch(({z, special}) => {
         Notiflix.Notify.failure(
           `❌ Rejected promise ${position} in ${delay}ms`
         );
