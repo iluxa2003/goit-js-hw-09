@@ -23,7 +23,7 @@ function repetable() {
   // }
   for (let i = 0; i < parseInt(amount.value); i++) {
     const special = parseInt(delay.value) + parseInt(step.value) * i;
-    createPromise(position, special)
+    createPromise(i+1, special)
       .then(({ position, delay }) => {
         Notiflix.Notify.success(
           `✅ Fulfilled promise ${position} in ${delay}ms`
