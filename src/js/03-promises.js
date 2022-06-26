@@ -17,9 +17,9 @@ function createPromise(position, delay) {
   const promise = new Promise((resolve, reject) => {
     setTimeout(() => {
       if (shouldResolve) {
-        resolve(`✅ Fulfilled promise ${position} in ${delay}ms`);
+        resolve({ position, delay });
       } else {
-        reject(`❌ Rejected promise ${position} in ${delay}ms`);
+        reject({ position, delay });
       }
     }, delay);
   });
@@ -35,11 +35,11 @@ function repetable() {
   for (let i = 0; i < parseInt(amount.value); i++) {
     const special = parseInt(delay.value) + parseInt(step.value) * i;
     createPromise(i + 1, special)
-    .then(value => {
-      Notiflix.Notify.success(value);
+    .then(({ position, delay }) => {
+      Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
     })
-    .catch(error => {
-      Notiflix.Notify.failure(error);
+    .catch(({ position, delay }) => {
+      Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
     });
   }
 }
