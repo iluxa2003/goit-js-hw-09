@@ -24,13 +24,7 @@ function createPromise(position, delay) {
     }, delay);
   });
 
-  promise
-    .then(value => {
-      Notiflix.Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
-    })
-    .catch(error => {
-      Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
-    });
+  return promise;
 }
 function repetable() {
   // for(let i = 0; i<parseInt(amount.value) ;i++){
@@ -40,7 +34,13 @@ function repetable() {
   // }
   for (let i = 0; i < parseInt(amount.value); i++) {
     const special = parseInt(delay.value) + parseInt(step.value) * i;
-    createPromise(i + 1, special);
+    createPromise(i + 1, special)
+    .then(value => {
+      Notiflix.Notify.success(value);
+    })
+    .catch(error => {
+      Notiflix.Notify.failure(error);
+    });
   }
 }
 const starting = event => {
